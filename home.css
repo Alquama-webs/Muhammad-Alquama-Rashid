@@ -21,7 +21,7 @@ nav{
     background-size: cover;
 }
 .nav_title{
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #01FEFF;
 }
 
@@ -151,7 +151,7 @@ footer {
 .footer_container {
     max-width: 1200px;
     margin: 0 auto;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bolder;
     color: aqua;
 }

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Objective Questions</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .link{
+            text-decoration: none;
+        }
+        nav{
+            display: flex;
+            width: 100vw;
+            height: 10vh;
+            background-color: #00085D;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav_logo{
+            width: 23vw;
+            height: 10vh;
+            background-image: url('/Md Alquama Rashid Logo.jpg');
+            background-size: cover;
+        }
+        .nav_title h3{
+            font-size: 1.5em;
+            color: #01FEFF;
+        }
+        
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px;
+        }
+
+        .img_container {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            margin-bottom: 20px;
+        }
+
+        .head_line {
+            text-align: center;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        .objective_container {
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        .objective_container_question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .objective_container_options {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+            color: blue;
+        }
+
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .option.correct {
+            background-color: green;
+            color: white;
+        }
+
+        .option.incorrect {
+            background-color: red;
+            color: white;
+        }
+
+        /* Styling for the result button */
+        #getResult {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin: 5%;
+        }
+
+        #getResult:hover {
+            background-color: #007bff;
+            /* Darker shade of blue on hover */
+        }
+
+        /* Styling for the result popup */
+        .result_popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            /* Slightly rounder corners */
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            animation: popupAppear ease forwards;
+        }
+
+        /* Define the animation */
+        @keyframes popupAppear {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.0);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Apply the animation class */
+        .result_popup.show {
+            display: block;
+            animation: popupAppear 1.5s ease forwards;
+        }
+
+        .result_popup h2 {
+            text-align: center;
+        }
+
+        /* Button styles for the result popup */
+        .result_popup button {
+            padding: 8px 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-bottom: 4%;
+        }
+
+        .result_popup button:hover {
+            background-color: #007bff;
+            /* Darker shade of blue on hover */
+        }
+        footer {
+            background-color: #00085D;
+            text-align: center;
+            padding: 10px 0;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 1.2em;
+            font-weight: bolder;
+            color: aqua;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+        <nav>
+        
+        <div class="nav_logo">
+            
+        </div>
+        
+        <div class="nav_title">
+            <a class="link" id="home" href="/index.html"><h3>Mohammad Alquama Rashid</h3></a>
+        </div>
+        
+    </nav>
+
+    <div class="container" id="container"></div>
+
+    <button id="getResult">Get Result</button>
+    <div class="result_popup" id="resultPopup">
+        <h2>Result</h2>
+        <p id="correctAnswers"></p>
+        <p id="incorrectAnswers"></p>
+        <p id="totalScore"></p>
+        <p id="userScore"></p>
+        <p id="accuracy"></p>
+        <button id="returnBtn">Return</button>
+        <button id="home">Home</button>
+    </div>
+        <footer>
+        <div class="footer_container">
+            <p>&copy; 2024 Mohammad Alquama Rashid. All rights reserved.</p>
+    </div>
+    </footer>
+
+</body>
+<script>
+    const container = document.getElementById('container');
+    let questionCounter = 1;
+    let answered = false;
+    let correctAnswersCount = 0;
+    let incorrectAnswersCount = 0;
+    const correctAudio = new Audio('correct.mp3');
+    const incorrectAudio = new Audio('incorrect.mp3');
+    const resultSound = new Audio('resultSound.mp3');
+    const returnBtn = document.getElementById('returnBtn')
+    const home = document.getElementById('click', function(){
+        window.location.href = 'index.html'
+    })
+    
+    returnBtn.addEventListener('click', function (){
+        window.location.href = 'Biology Class 11th NEET Module - 01 | Chapter 03 Plant Kingdom .html'
+    })
+    
+    
+    function writeObjective(question, optionA, optionB, optionC, optionD, answer) {
+        const objectiveContainer = document.createElement('div');
+        const objectiveContainerQuestion = document.createElement('div');
+        const objectiveContainerOptions = document.createElement('div');
+        const optionAElement = document.createElement('div');
+        const optionBElement = document.createElement('div');
+        const optionCElement = document.createElement('div');
+        const optionDElement = document.createElement('div');
+
+        objectiveContainer.classList.add('objective_container');
+        objectiveContainerQuestion.classList.add('objective_container_question');
+        objectiveContainerOptions.classList.add('objective_container_options');
+        optionAElement.classList.add('option');
+        optionBElement.classList.add('option');
+        optionCElement.classList.add('option');
+        optionDElement.classList.add('option');
+
+        objectiveContainerQuestion.innerText = 'Q.' + questionCounter + ') ' + question;
+        optionAElement.innerText = optionA;
+        optionBElement.innerText = optionB;
+        optionCElement.innerText = optionC;
+        optionDElement.innerText = optionD;
+
+        // Check answer on option click
+        optionAElement.addEventListener('click', () => checkAnswer(optionAElement, answer));
+        optionBElement.addEventListener('click', () => checkAnswer(optionBElement, answer));
+        optionCElement.addEventListener('click', () => checkAnswer(optionCElement, answer));
+        optionDElement.addEventListener('click', () => checkAnswer(optionDElement, answer));
+
+        objectiveContainerOptions.append(optionAElement, optionBElement, optionCElement, optionDElement);
+        objectiveContainer.append(objectiveContainerQuestion, objectiveContainerOptions);
+        container.appendChild(objectiveContainer);
+
+        questionCounter++;
+    }
+
+    // Function to check answer and provide feedback
+    function checkAnswer(optionElement, answer) {
+        if (!answered) {
+            answered = true;
+            if (optionElement.innerText === answer) {
+                optionElement.classList.add('correct');
+                correctAudio.play()
+                correctAnswersCount++;
+            } else {
+                optionElement.classList.add('incorrect');
+                // Find correct answer and change its class to correct
+                let options = optionElement.parentElement.children;
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].innerText === answer) {
+                        options[i].classList.add('correct');
+                        break;
+                    }
+                }
+                incorrectAnswersCount++;
+                incorrectAudio.play()
+            }
+            // Disable all options after user has answered
+            let options = optionElement.parentElement.children;
+            for (let i = 0; i < options.length; i++) {
+                options[i].style.pointerEvents = 'none';
+            }
+        }
+        answered = false;
+    }
+
+    function addImg(imgUrl) {
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('img_container');
+        imgContainer.style.backgroundImage = `url('${imgUrl}')`;
+        container.appendChild(imgContainer);
+    }
+
+    function addHeadLine(text) {
+        const headLine = document.createElement('h2');
+        headLine.classList.add('head_line');
+        headLine.innerText = text;
+        container.appendChild(headLine);
+    }
+
+    function showResult() {
+        const totalQuestions = questionCounter - 1;
+        const totalScore = totalQuestions * 4;
+        const userScore = correctAnswersCount * 4 - incorrectAnswersCount;
+        const accuracy = (userScore / totalScore) * 100;
+
+        const resultPopup = document.getElementById('resultPopup');
+
+        resultPopup.classList.add('show');
+
+        document.getElementById('correctAnswers').innerText = 'Correct Answers: ' + correctAnswersCount;
+        document.getElementById('incorrectAnswers').innerText = 'Incorrect Answers: ' + incorrectAnswersCount;
+        document.getElementById('totalScore').innerText = 'Total Score: ' + totalScore;
+        document.getElementById('userScore').innerText = 'Your Score: ' + userScore;
+        document.getElementById('accuracy').innerText = 'Accuracy: ' + accuracy.toFixed(2) + '%';
+    }
+    addImg('Biology Class 11th NEET Module - 01 | Chapter 03 Plant Kingdom Thumbnail.jpg')
+    
+    addHeadLine("Classification")
+    
+    writeObjective('The phylogenetic classification was put forth by:', 'Carolus Linnaeus ', 'Aristotle ', 'Adolf Engler and Karl Prantl', 'Theophrastus', 'Adolf Engler and Karl Prantl');
+    writeObjective('Which are true about neumerical taxonomy ? \n \n A)Equal importance given to each character \n B) Based on all observable characters \n C)  Easily carried out using computers \n D) At the same time only few characters can be considers','A, B and D', 'B, C and D', 'A, C and D', 'A, B and C', 'A, B and C');
+    writeObjective('Natural system of classification is based on', 'External and internal features','Ultrastructure and anatomy', 'Embryology and phytochemistry', 'All of the above','All of the above');
+    writeObjective('Tracheophyta includes', 'Bryophyta and Pteridophyta', 'Pteridophyta and Gymnosperm','Gymnosperm and Angiosperm', 'Pteridophyta, Gymnosperm and Angiosperm','Pteridophyta, Gymnosperm and Angiosperm');
+    writeObjective('Which is/are included in the phanerogams ?', 'Pteridophyta', 'Gymnosperm', 'Angiosperm','Both (b) and (c)', 'Both (b) and (c)');
+    writeObjective('The natural system of classification for flowering plants was given by', 'R.H Whittaker', 'Aristotle and G.J. Mendel', 'George Bentham and J.D. Hooker', 'Aristotle and George Bentham', 'George Bentham and J.D. Hooker');
+    writeObjective('Classification which is based on evolutionary relationships of various organisms is', 'Artificial', 'Natural', 'Phylogenetic', 'Two kingdom classification', 'Phylogenetic');
+    writeObjective('Classification which is based only on morphological characters is called', 'Artificial system', 'Natural system', 'Phylogenetic system', 'Numerical taxonomy', 'Artificial system');
+    writeObjective('Classification based on cytological information like chromosome number, structure and behaviour is called', 'Numerical taxonomy', 'Cytotaxonomy', 'Chemotaxonomy', 'Nuclear taxonomy', 'Cytotaxonomy');
+    writeObjective('Archegoniate is an assemblage of:', 'Algae, bryophyta and pteridophyta', 'Bryophyta, pteridophyta and gymnosperm', 'Bryophyta pteridophyta gymnosperm and angiosperm', 'pteridophyta, gymnosperm and angiosperm', 'Bryophyta, pteridophyta and gymnosperm');
+    addHeadLine("Algae");
+    writeObjective('In ulothrix, meiosis takes place during', 'Gamete formation', 'Zoospore formation', 'Zoospore germination', 'Zygote germination', 'Zygote germination');
+    writeObjective('Trichoderma erythrium which gives colour to red sea is :', 'Green alga', 'Blue - Green alga', 'Red alga', 'Brown alga', 'Blue - Green alga');
+    writeObjective('The pigment that gives class-rhodophyceae (red algae) its distinctive red colour is', 'Chlorophyll-a, b', 'Chlorophyll-a, c', 'Chlorophyll-a, d', 'Chlorophyll-a, c and d', 'Chlorophyll-a, d');
+    writeObjective('Which of the following is a phaeophycean algae ?', 'Gelidium', 'Polysiphonia', 'Porphyra', 'Laminaria', 'Laminaria');
+    writeObjective('Which of the following is not a character of brown algae ?', 'Presence of chlorophyll a and b', 'It remains attached to substratum', 'Presence of chlorophyll a and c', 'Presence of fucoxanthin', 'Presence of chlorophyll a and b');
+    writeObjective('Phycoerythrin pigment is found in', 'Green algae', 'Red algae', 'Brown algae', 'All of the above', 'Red algae');
+    writeObjective('In which alga, motile colonies are found ?', 'Volvox', 'Spirogyra', 'Ulothrix', 'All of the above', 'Volvox');
+    writeObjective('Match the columns I and II, and Choose the correct combinations from the options given. \n \n  A) Chlorophyceae                    i) Floridean starch \n B) Phaeophyceae                    ii) Starch \n C) Rhodophyceae                    iii) Laminarin and mannitol', 'A-i, B-ii, C-iii', 'A-ii, B-iii, C-i', 'A-i, B-iii, C-ii', 'A-ii, B-i, C-iii', 'A-ii, B-iii, C-i');
+    writeObjective('Algae growing on shells and bodies of animals are called ', 'Epiphytic', 'Epilithic', 'Epizoic', 'Endophytic', 'Epizoic');
+    writeObjective('Which of the following is non-flagellate ?', 'Chlorella', 'Ulothrix', 'Spirogyra', 'All of the above', 'All of the above');
+    writeObjective('Which of the following algae are used by space travellers as food suppliments ?', 'Gracilaria, Gelidium', 'Volvox, Ulothrix', 'Spirogyra, Kelps', 'Spirulina, Chlorella', 'Spirulina, Chlorella');
+    writeObjective('Volvox and Polysiphonia are members of algal class, A and B respectively. Which of the following statements is correct ?', 'Cellulose and algin are cell wall components of members oa A', 'Floridean starch is stored material in B', 'Chlorophyll a, c and fucoxanthin are the photosynthesis pigments found in class A', 'Two unequal flagella are found in members of B', 'Floridean starch is stored material in B');
+    writeObjective('Fusions between a larger non motile female gamete and smaller motile male gamete is called', 'Isogamy', 'Anisogamy', 'Oogamy', 'None of the above', 'Oogamy');
+    writeObjective('How many chloroplast are present in a cell of Ulothrix ', 'Single', 'Many', 'Few', 'None', 'Single');
+    writeObjective('Pyrenoids are found in the chloroplast of', 'Algae', 'Pteridophytes ', 'Gymnosperm', 'Angiosperm', 'Algae');
+    writeObjective('Pyrenoid consists of', 'Protein besides starch', 'Protein around starch', 'Starch around protein', 'Both (a) and (c)', 'Both (a) and (c)');
+    writeObjective('Pyrenoides are related to', 'Protein storage', 'Starch formation', 'Metabolism', 'Reproduction', 'Starch formation');
+    writeObjective('Fucoxanthin pigment is found in', 'Green algae', 'Brown algae', 'Red algae', 'All of the above ', 'Brown algae');
+    writeObjective('Algae which is used as food by space travellers is', 'Chlorella', 'Nostoc', 'Spirulina', 'Both (a) and (c)', 'Both (a) and (c)');
+    writeObjective('Fusion of two motile gametes which are dissimilar in size is termed as', 'Oogamy', 'Isogamy', 'Anisogamy', 'Zoogamy', 'Anisogamy');
+    writeObjective('Agar an algin are products of', 'Cell membrane', 'Cell wall', 'Mitochondria', 'Vacuole', 'Cell wall');
+    writeObjective('Sexual reproduction in Ulothrix is', 'Isogamous', 'Anisogamous', 'Oogamous', 'All of the above ', 'Isogamous');
+    writeObjective('Ulothrix and spirogyra reproduce vegetatively by', 'Fragmentation', 'Binary fission ', 'Budding ', 'All of the above ', 'Fragmentation');
+    writeObjective('In chlorophycee and phaeophyceae the types of sexual reproduction is/are', 'Isogamous', 'Anisogamous', 'Oogamous', 'All of the above', 'All of the above');
+    writeObjective('Match the column I and II, and choose the correct combination from the options given. \n \n A) Chlorophyceae   i) Chlorophyll a, c, fucoxanthin \n B) Phaeophyceae ii) Chlorophyll a, d, phycoerythrin \n C) Rhodophyceae iii) Chlorophyll a, b', 'A-iii, B-i, C-ii', 'A-iii, B-ii, C-i', 'A-ii, B-i, C-iii', 'A-i, B-iii, C-ii', 'A-iii, B-i, C-ii');
+    writeObjective('In Phaeophyceae, the gametes are', 'Pyriform and bear 2 flagella (one longitudinal and other transverse)', 'Pear-shaped and bear 2 flagella that are laterally attached', 'Pyriform and bear 2-8, equal and apical flagella', 'Pear-shaped and bear 2-8, equal and apical flagella', 'Pear-shaped and bear 2 flagella that are laterally attached');
+    writeObjective('The plant body of brown algae is attached to the substratum by', 'Holdfast', 'Stipe', 'Stalk', 'Frond', 'Holdfast');
+    writeObjective('In which class, the cell wall possesses pectin and polysulphate easters beside the cellulose?', 'Chlorophyceae', 'Phaeophyceae', 'Rhodophyceae', 'All of the above', 'Rhodophyceae');
+    writeObjective('In Fucus, the male and female gamete are ', 'Motile', 'Non-motile', 'Motile and non-motile respectively', 'Non-motile and motile respectively', 'Motile and non-motile respectively');
+    writeObjective('In Phaeophyceae, vegetative reproduction takes place by', 'Fragmentation', 'Binary fission', 'Budding', 'All of the above', 'Fragmentation');
+    writeObjective('How many species of marine algae are use as food?', '17', '7', '70', '71', '70');
+    writeObjective('Floridean starch is very similar to', 'Amylopectin', 'Cellulose', 'Glycogen', 'Both (a) and (c)', 'Both (a) and (c)');
+    writeObjective('Algae classified into three classes on the basis of', 'Type of pigment', 'Type of stored food material', 'Type of reproduction', 'Both (a) and (c)', 'Both (a) and (c)');
+    writeObjective('Cell wall is made an inner layer of cellulose and an outer layer of pectose, in', 'Ectocarpous', 'Sargassum', 'Chara', 'Glacilaria', 'Chara');
+    writeObjective('At least a half of the total CO₂ fixation on Earth is carry out by', 'Algae', 'Angiosperm', 'Bryophyta', 'Gymnosperm', 'Algae');
+    writeObjective('In most of the algal genera the dominant phase of life cycle is', 'Haplontic', 'Diplontic', 'Haplodiplontic ', 'Isomorphic', 'Haplontic');
+    writeObjective('Which type of life cycle is shown by  kelps, Ectocarpus and Polysiphonia?', 'Haplontic', 'Diplontic', 'Haplodiplontic', 'Isomorphic', 'Haplodiplontic');
+    writeObjective('Find out the incorrect match:', 'Ulothrix and Spirogyra — Filamentous algae', 'Clamydomonous — Unicellular flagellate algae', 'Chlorella — Unicellu

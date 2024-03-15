@@ -55,7 +55,7 @@ function newPost(imgURL, Title, linkURL) {
 }
 
 // Example usage
-newPost('/Biology Class 11th NEET Module - 01 | Chapter 03 Plant Kingdom Thumbnail.jpg', "Biology Class 11th NEET Module - 01 | Chapter - 03 Plant Kingdom", "/Biology Class 11th NEET Module - 01 | Chapter 03 Plant Kingdom .html");
+newPost('Biology Class 11th NEET Module - 01 | Chapter 03 Plant Kingdom Thumbnail.jpg', "Biology Class 11th NEET Module - 01 | Chapter - 03 Plant Kingdom", "Biology Class 11th NEET Module - 01 | Chapter 03 Plant Kingdom .html");
 
 function categoryBtnOprnContentPage(btn, page1, page2, page3, page4, page5, page6) {
     btn.addEventListener('click', () => {

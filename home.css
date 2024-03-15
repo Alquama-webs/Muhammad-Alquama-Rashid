@@ -1,0 +1,158 @@
+body{
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+/* nav */
+
+nav{
+    display: flex;
+    width: 100vw;
+    height: 10vh;
+    background-color: #00085D;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav_logo{
+    width: 23vw;
+    height: 10vh;
+    background-image: url('/Md Alquama Rashid Logo.jpg');
+    background-size: cover;
+}
+.nav_title{
+    font-size: 1.5em;
+    color: #01FEFF;
+}
+
+/* catergory */
+
+.catergory_btn{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 30%;
+    background-color: #0011C7;
+    color: aqua;
+}
+.catergory_class_and_subject{
+    display: none;
+    justify-content: center;
+    width: 100%;
+    height: 00%;
+    background-color: #0011C7;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+
+.catergory_class_subject{
+    display: block;
+    width: 90%;
+    height: 10%;
+    background-color: #01FEFF;
+    margin: 2%;
+    color: red;
+    font-weight: bolder;
+}
+.catergory_class_subject:active{
+    background-color: #00085D;
+}
+.catergory_btn:active{
+    background-color: #00085D;
+}
+
+.catergory_class_subject_content{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.catergory_class{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: red;
+}
+#11th_biology_subject_content{
+    display: none;
+}
+#12th_biology_subject_content{
+    display: none;
+}
+#11th_chemestry_subject_content{
+    display: none;
+}
+#12th_chemestry_subject_content{
+    display: none;
+}
+#11th_physic_subject_content{
+    display: none;
+}
+#12th_physic_subject_content{
+    display: none;
+}
+
+.content_item{
+    width: 90%;
+    height: 100%;
+    background-color: aqua;
+    font-weight: bolder;
+    margin: 2%;
+    border-radius: 15%;
+    text-align: center;
+}
+
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.post_container {
+    width: 370px;
+    margin: 24px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.post_container_image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+}
+
+.post_container_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+/* footer */
+
+footer {
+    background-color: #00085D;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    font-weight: bolder;
+    color: aqua;
+}
+

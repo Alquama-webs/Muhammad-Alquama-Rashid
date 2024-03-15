@@ -1,0 +1,181 @@
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.link{
+    text-decoration: none;
+}
+nav{
+    display: flex;
+    width: 100vw;
+    height: 10vh;
+    background-color: #00085D;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav_logo{
+    width: 23vw;
+    height: 10vh;
+    background-image: url('Md Alquama Rashid Logo.jpg');
+    background-size: cover;
+}
+.nav_title h3{
+    font-size: 1.5em;
+    color: #01FEFF;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+            }
+
+.img_container {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.head_line {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.objective_container {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.objective_container_question {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.objective_container_options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.option {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    color: blue;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+}
+
+.option.correct {
+    background-color: green;
+    color: white;
+}
+
+.option.incorrect {
+    background-color: red;
+    color: white;
+}
+
+/* Styling for the result button */
+#getResult {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin: 5%;
+}
+
+#getResult:hover {
+    background-color: #007bff;
+    /* Darker shade of blue on hover */
+}
+
+/* Styling for the result popup */
+.result_popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    /* Slightly rounder corners */
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    animation: popupAppear ease forwards;
+}
+
+/* Define the animation */
+@keyframes popupAppear {
+    0% {
+opacity: 0;
+transform: translate(-50%, -50%) scale(0.0);
+    }
+
+    100% {
+opacity: 1;
+transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Apply the animation class */
+.result_popup.show {
+    display: block;
+    animation: popupAppear 1.5s ease forwards;
+}
+
+.result_popup h2 {
+    text-align: center;
+}
+
+/* Button styles for the result popup */
+.result_popup button {
+    padding: 8px 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-bottom: 4%;
+}
+
+.result_popup button:hover {
+    background-color: #007bff;
+    /* Darker shade of blue on hover */
+}
+footer {
+    background-color: #00085D;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    font-weight: bolder;
+    color: aqua;
+}
+
+
